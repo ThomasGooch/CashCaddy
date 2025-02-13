@@ -19,6 +19,7 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ExpenseDbContext>();
     dbContext.Database.Migrate();
+    SeedDatabase(dbContext);
 }
 
 // Configure the HTTP request pipeline.
@@ -77,5 +78,36 @@ app.MapDelete("/expenses/{id}", async (Guid id, IExpenseRepository repository) =
 });
 
 app.Run();
+
+void SeedDatabase(ExpenseDbContext context)
+{
+    if (!context.Expenses.Any())
+    {
+        context.Expenses.AddRange(
+            new Expense
+            {
+                Date = DateTime.UtcNow.AddDays(-1),
+                Amount = 50.00m,
+                Description = "Groceries",
+                Category = "Food"
+            },
+            new Expense
+            {
+                Date = DateTime.UtcNow.AddDays(-2),
+                Amount = 20.00m,
+                Description = "Taxi",
+                Category = "Transport"
+            },
+            new Expense
+            {
+                Date = DateTime.UtcNow.AddDays(-3),
+                Amount = 100.00m,
+                Description = "Electricity Bill",
+                Category = "Utilities"
+            }
+        );
+        context.SaveChanges();
+    }
+}
 
 
