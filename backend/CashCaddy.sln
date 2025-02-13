@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E79419E-DCBD-4D10-9477-BCE6B040B855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashCaddy.API", "src\CashCaddy\CashCaddy.API.csproj", "{329FFDA4-6C91-4386-A186-4DDD002FF4D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1F59759F-1411-438D-A8D0-6D24E5CC0D3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashCaddy.API.Tests", "tests\CashCaddy.API.Tests\CashCaddy.API.Tests.csproj", "{71529178-5E4E-4799-AEA7-E4E7AD34148C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{329FFDA4-6C91-4386-A186-4DDD002FF4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329FFDA4-6C91-4386-A186-4DDD002FF4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329FFDA4-6C91-4386-A186-4DDD002FF4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329FFDA4-6C91-4386-A186-4DDD002FF4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71529178-5E4E-4799-AEA7-E4E7AD34148C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71529178-5E4E-4799-AEA7-E4E7AD34148C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71529178-5E4E-4799-AEA7-E4E7AD34148C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71529178-5E4E-4799-AEA7-E4E7AD34148C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{329FFDA4-6C91-4386-A186-4DDD002FF4D8} = {4E79419E-DCBD-4D10-9477-BCE6B040B855}
+		{71529178-5E4E-4799-AEA7-E4E7AD34148C} = {1F59759F-1411-438D-A8D0-6D24E5CC0D3D}
+	EndGlobalSection
+EndGlobal
