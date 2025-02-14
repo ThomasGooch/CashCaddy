@@ -1,4 +1,6 @@
- public interface IExpenseRepository
+
+
+public interface IExpenseRepository
     {
         Task<IEnumerable<Expense>> GetAllExpensesAsync();
         Task<Expense?> GetExpenseByIdAsync(Guid id);

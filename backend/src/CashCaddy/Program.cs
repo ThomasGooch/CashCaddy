@@ -1,7 +1,11 @@
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+    });
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -12,7 +16,21 @@ builder.Services.AddDbContext<ExpenseDbContext>(options =>
 // Register the repository
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:5173")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+// Use CORS
+app.UseCors();
 
 // Apply migrations at startup
 using (var scope = app.Services.CreateScope())
@@ -29,6 +47,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 // Map minimal APIs for CRUD operations on expenses
 app.MapGet("/expenses", async (IExpenseRepository repository) =>
@@ -84,21 +103,21 @@ void SeedDatabase(ExpenseDbContext context)
     if (!context.Expenses.Any())
     {
         context.Expenses.AddRange(
-            new Expense
+            new CashCaddy.API.Models.Expense
             {
                 Date = DateTime.UtcNow.AddDays(-1),
                 Amount = 50.00m,
                 Description = "Groceries",
                 Category = "Food"
             },
-            new Expense
+            new CashCaddy.API.Models.Expense
             {
                 Date = DateTime.UtcNow.AddDays(-2),
                 Amount = 20.00m,
                 Description = "Taxi",
                 Category = "Transport"
             },
-            new Expense
+            new CashCaddy.API.Models.Expense
             {
                 Date = DateTime.UtcNow.AddDays(-3),
                 Amount = 100.00m,
