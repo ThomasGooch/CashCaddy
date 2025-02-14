@@ -397,4 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .DS_Store
-backend/src/CashCaddy/mckesson.root.1 1.crt
+backend/src/CashCaddy/*.crt
+
